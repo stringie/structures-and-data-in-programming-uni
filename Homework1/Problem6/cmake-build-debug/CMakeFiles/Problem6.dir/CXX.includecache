@@ -1,0 +1,24 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/string/dev/data-structures/Homework1/Problem6/Editor.cpp
+Editor.h
+/home/string/dev/data-structures/Homework1/Problem6/Editor.h
+
+/home/string/dev/data-structures/Homework1/Problem6/Editor.h
+iostream
+-
+stack
+-
+
+/home/string/dev/data-structures/Homework1/Problem6/main.cpp
+iostream
+-
+Editor.h
+/home/string/dev/data-structures/Homework1/Problem6/Editor.h
+
