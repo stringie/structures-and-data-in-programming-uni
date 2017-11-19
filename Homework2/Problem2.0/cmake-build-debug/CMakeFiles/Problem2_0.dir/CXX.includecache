@@ -1,0 +1,30 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/string/dev/data-structures/Homework2/Problem2.0/Queue.cpp
+algorithm
+-
+Queue.h
+/home/string/dev/data-structures/Homework2/Problem2.0/Queue.h
+vector
+/home/string/dev/data-structures/Homework2/Problem2.0/vector
+
+/home/string/dev/data-structures/Homework2/Problem2.0/Queue.h
+iostream
+-
+stack
+/home/string/dev/data-structures/Homework2/Problem2.0/stack
+
+/home/string/dev/data-structures/Homework2/Problem2.0/main.cpp
+iostream
+-
+Queue.h
+/home/string/dev/data-structures/Homework2/Problem2.0/Queue.h
+Queue.cpp
+/home/string/dev/data-structures/Homework2/Problem2.0/Queue.cpp
+

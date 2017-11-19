@@ -1,0 +1,3 @@
+/home/string/dev/data-structures/Homework2/Problem2.2/cmake-build-debug/CMakeFiles/edit_cache.dir
+/home/string/dev/data-structures/Homework2/Problem2.2/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/home/string/dev/data-structures/Homework2/Problem2.2/cmake-build-debug/CMakeFiles/Problem2_2.dir

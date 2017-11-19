@@ -1,0 +1,14 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/string/dev/structures-and-data-in-programming-uni/Homework2/Problem2.3/main.cpp
+iostream
+-
+queue
+/home/string/dev/structures-and-data-in-programming-uni/Homework2/Problem2.3/queue
+

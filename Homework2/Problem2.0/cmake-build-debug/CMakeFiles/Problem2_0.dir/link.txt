@@ -1,0 +1,1 @@
+/usr/bin/c++  -g   CMakeFiles/Problem2_0.dir/main.cpp.o CMakeFiles/Problem2_0.dir/Queue.cpp.o  -o Problem2_0 
