@@ -47,7 +47,7 @@
       <file leaf-file-name="HorseOverlapping.cpp" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/HorseOverlapping.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="144">
+            <state relative-caret-position="-18">
               <caret line="32" column="0" lean-forward="false" selection-start-line="32" selection-start-column="0" selection-end-line="32" selection-end-column="0" />
               <folding>
                 <element signature="e#0#19#0" expanded="true" />
@@ -144,12 +144,12 @@
       <option name="presentableId" value="Default" />
       <updated>1513973752105</updated>
       <workItem from="1513973757261" duration="8995000" />
-      <workItem from="1514020211682" duration="38000" />
+      <workItem from="1514020211682" duration="651000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="9033000" />
+    <option name="totallyTimeSpent" value="9646000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="27" width="1600" height="873" extended-state="6" />
@@ -276,7 +276,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/HorseOverlapping.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="144">
+        <state relative-caret-position="-18">
           <caret line="32" column="0" lean-forward="false" selection-start-line="32" selection-start-column="0" selection-end-line="32" selection-end-column="0" />
           <folding>
             <element signature="e#0#19#0" expanded="true" />
