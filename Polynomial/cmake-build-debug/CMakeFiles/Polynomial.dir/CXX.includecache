@@ -1,0 +1,16 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/string/dev/structures-and-data-in-programming-uni/Polynomial/main.cpp
+cmath
+-
+iostream
+/home/string/dev/structures-and-data-in-programming-uni/Polynomial/iostream
+list
+/home/string/dev/structures-and-data-in-programming-uni/Polynomial/list
+

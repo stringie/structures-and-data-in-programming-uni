@@ -1,0 +1,14 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/string/dev/structures-and-data-in-programming-uni/StackProblems/HorseOverlapping.cpp
+iostream
+/home/string/dev/structures-and-data-in-programming-uni/StackProblems/iostream
+stack
+/home/string/dev/structures-and-data-in-programming-uni/StackProblems/stack
+

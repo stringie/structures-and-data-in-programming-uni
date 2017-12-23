@@ -1,0 +1,3 @@
+/home/string/dev/structures-and-data-in-programming-uni/Polynomial/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/home/string/dev/structures-and-data-in-programming-uni/Polynomial/cmake-build-debug/CMakeFiles/edit_cache.dir
+/home/string/dev/structures-and-data-in-programming-uni/Polynomial/cmake-build-debug/CMakeFiles/Polynomial.dir
