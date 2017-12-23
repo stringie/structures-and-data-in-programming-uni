@@ -2,6 +2,7 @@
 #include "stack"
 using namespace std;
 
+//Knight piece structure with methods for overlapping with other piece and iterating across the board + copy Knight
 struct Knight{
     int x;
     int y;
@@ -35,23 +36,10 @@ struct Knight{
     }
 };
 
-bool isElemInStack(stack<Knight> s, int x, int y){
-    while (!s.empty())
-    {
-        if (s.top().x == x && s.top().y == y){
-            return true;
-        }
-        s.pop();
-    }
-
-    return false;
-}
-
 class KnightConfig
 {
 public:
     KnightConfig(int board, int knightNumber);
-    ~KnightConfig();
     void printCurrentConfig();
     bool noMoreConfigs();
     void findNextConfig();
@@ -61,6 +49,21 @@ private:
     int k;
     bool fin; 
     stack<Knight> knights;  
+
+    //checking whether x y position is in knight stack
+    bool isElemInStack(stack<Knight> s, int x, int y){
+        while (!s.empty())
+        {
+            if (s.top().x == x && s.top().y == y){
+                return true;
+            }
+            s.pop();
+        }
+
+        return false;
+    }
+
+    //method for overlapping knights
     bool overlapping(Knight knight, stack<Knight> s){
         while (!s.empty())
         {
@@ -69,33 +72,7 @@ private:
             }
             s.pop();
         }
-
         return false;
-    }
-    bool placeNext(){
-        if(knights.empty()){
-            fin = true;
-            return false;
-        }
-
-        Knight top = knights.top();
-        top.iterate(n);
-        knights.pop();
-        while(overlapping(top, knights)){
-            top.iterate(n);
-        }
-        if (top.x >= n){
-            placeNext();
-            return false;
-        }else{
-            knights.push(top);
-            if(knights.size() < k){
-                Knight copy = knights.top().copy();
-                knights.push(copy);
-                placeNext();
-            }
-            return true;
-        }
     }
 };
 
@@ -111,10 +88,33 @@ KnightConfig::KnightConfig(int board, int knightNumber)
     }
 }
 
-KnightConfig::~KnightConfig(){}
-
 void KnightConfig::findNextConfig(){
-    bool placed = placeNext();
+    //endgame
+    if(knights.empty()){
+        fin = true;
+        return;
+    }
+
+    //pop top and iterate to next available position
+    Knight top = knights.top();
+    top.iterate(n); // cant stay in the same position
+    knights.pop();
+    while(overlapping(top, knights)){
+        top.iterate(n);
+    }
+
+    //if outside board, discard piece, call recursively for next piece in stack
+    //else push to stack and place recursively rest
+    if (top.x >= n){
+        findNextConfig();
+    }else {
+        knights.push(top);
+        if(knights.size() < k){
+            Knight copy = knights.top().copy();
+            knights.push(copy);
+            findNextConfig();
+        }
+    }
 }
 
 void KnightConfig::printCurrentConfig(){
@@ -139,13 +139,16 @@ bool KnightConfig::noMoreConfigs(){
 
 int main(){
     
-    KnightConfig config(5,5);
+    int n, k; cin >> n >> k;
+
+    KnightConfig config(n,k);
     while (!config.noMoreConfigs())
     {
         config.printCurrentConfig();
         config.findNextConfig();
     }
 
+    //for viewing the debug window
     int p;
     cin >> p; 
 }
