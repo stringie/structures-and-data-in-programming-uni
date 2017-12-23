@@ -57,38 +57,38 @@ include CMakeFiles/StackProblems.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/StackProblems.dir/flags.make
 
-CMakeFiles/StackProblems.dir/HorseOverlapping.cpp.o: CMakeFiles/StackProblems.dir/flags.make
-CMakeFiles/StackProblems.dir/HorseOverlapping.cpp.o: ../HorseOverlapping.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/string/dev/structures-and-data-in-programming-uni/StackProblems/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/StackProblems.dir/HorseOverlapping.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/StackProblems.dir/HorseOverlapping.cpp.o -c /home/string/dev/structures-and-data-in-programming-uni/StackProblems/HorseOverlapping.cpp
+CMakeFiles/StackProblems.dir/KnightOverlapping.cpp.o: CMakeFiles/StackProblems.dir/flags.make
+CMakeFiles/StackProblems.dir/KnightOverlapping.cpp.o: ../KnightOverlapping.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/string/dev/structures-and-data-in-programming-uni/StackProblems/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/StackProblems.dir/KnightOverlapping.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/StackProblems.dir/KnightOverlapping.cpp.o -c /home/string/dev/structures-and-data-in-programming-uni/StackProblems/KnightOverlapping.cpp
 
-CMakeFiles/StackProblems.dir/HorseOverlapping.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/StackProblems.dir/HorseOverlapping.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/string/dev/structures-and-data-in-programming-uni/StackProblems/HorseOverlapping.cpp > CMakeFiles/StackProblems.dir/HorseOverlapping.cpp.i
+CMakeFiles/StackProblems.dir/KnightOverlapping.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/StackProblems.dir/KnightOverlapping.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/string/dev/structures-and-data-in-programming-uni/StackProblems/KnightOverlapping.cpp > CMakeFiles/StackProblems.dir/KnightOverlapping.cpp.i
 
-CMakeFiles/StackProblems.dir/HorseOverlapping.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/StackProblems.dir/HorseOverlapping.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/string/dev/structures-and-data-in-programming-uni/StackProblems/HorseOverlapping.cpp -o CMakeFiles/StackProblems.dir/HorseOverlapping.cpp.s
+CMakeFiles/StackProblems.dir/KnightOverlapping.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/StackProblems.dir/KnightOverlapping.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/string/dev/structures-and-data-in-programming-uni/StackProblems/KnightOverlapping.cpp -o CMakeFiles/StackProblems.dir/KnightOverlapping.cpp.s
 
-CMakeFiles/StackProblems.dir/HorseOverlapping.cpp.o.requires:
+CMakeFiles/StackProblems.dir/KnightOverlapping.cpp.o.requires:
 
-.PHONY : CMakeFiles/StackProblems.dir/HorseOverlapping.cpp.o.requires
+.PHONY : CMakeFiles/StackProblems.dir/KnightOverlapping.cpp.o.requires
 
-CMakeFiles/StackProblems.dir/HorseOverlapping.cpp.o.provides: CMakeFiles/StackProblems.dir/HorseOverlapping.cpp.o.requires
-	$(MAKE) -f CMakeFiles/StackProblems.dir/build.make CMakeFiles/StackProblems.dir/HorseOverlapping.cpp.o.provides.build
-.PHONY : CMakeFiles/StackProblems.dir/HorseOverlapping.cpp.o.provides
+CMakeFiles/StackProblems.dir/KnightOverlapping.cpp.o.provides: CMakeFiles/StackProblems.dir/KnightOverlapping.cpp.o.requires
+	$(MAKE) -f CMakeFiles/StackProblems.dir/build.make CMakeFiles/StackProblems.dir/KnightOverlapping.cpp.o.provides.build
+.PHONY : CMakeFiles/StackProblems.dir/KnightOverlapping.cpp.o.provides
 
-CMakeFiles/StackProblems.dir/HorseOverlapping.cpp.o.provides.build: CMakeFiles/StackProblems.dir/HorseOverlapping.cpp.o
+CMakeFiles/StackProblems.dir/KnightOverlapping.cpp.o.provides.build: CMakeFiles/StackProblems.dir/KnightOverlapping.cpp.o
 
 
 # Object files for target StackProblems
 StackProblems_OBJECTS = \
-"CMakeFiles/StackProblems.dir/HorseOverlapping.cpp.o"
+"CMakeFiles/StackProblems.dir/KnightOverlapping.cpp.o"
 
 # External object files for target StackProblems
 StackProblems_EXTERNAL_OBJECTS =
 
-StackProblems: CMakeFiles/StackProblems.dir/HorseOverlapping.cpp.o
+StackProblems: CMakeFiles/StackProblems.dir/KnightOverlapping.cpp.o
 StackProblems: CMakeFiles/StackProblems.dir/build.make
 StackProblems: CMakeFiles/StackProblems.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/string/dev/structures-and-data-in-programming-uni/StackProblems/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable StackProblems"
@@ -99,7 +99,7 @@ CMakeFiles/StackProblems.dir/build: StackProblems
 
 .PHONY : CMakeFiles/StackProblems.dir/build
 
-CMakeFiles/StackProblems.dir/requires: CMakeFiles/StackProblems.dir/HorseOverlapping.cpp.o.requires
+CMakeFiles/StackProblems.dir/requires: CMakeFiles/StackProblems.dir/KnightOverlapping.cpp.o.requires
 
 .PHONY : CMakeFiles/StackProblems.dir/requires
 

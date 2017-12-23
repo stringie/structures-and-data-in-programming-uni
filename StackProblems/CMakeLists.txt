@@ -3,5 +3,5 @@ project(StackProblems)
 
 set(CMAKE_CXX_STANDARD 17)
 
-set(SOURCE_FILES HorseOverlapping.cpp)
+set(SOURCE_FILES KnightOverlapping.cpp)
 add_executable(StackProblems ${SOURCE_FILES})

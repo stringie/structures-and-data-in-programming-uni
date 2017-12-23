@@ -80,7 +80,7 @@
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="/home/string/dev/structures-and-data-in-programming-uni/StackProblems/HorseOverlapping.cpp">
+		<Unit filename="/home/string/dev/structures-and-data-in-programming-uni/StackProblems/KnightOverlapping.cpp">
 			<Option target="StackProblems"/>
 		</Unit>
 		<Unit filename="/home/string/dev/structures-and-data-in-programming-uni/StackProblems/CMakeLists.txt">

@@ -4,7 +4,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/home/string/dev/structures-and-data-in-programming-uni/StackProblems/HorseOverlapping.cpp" "/home/string/dev/structures-and-data-in-programming-uni/StackProblems/cmake-build-debug/CMakeFiles/StackProblems.dir/HorseOverlapping.cpp.o"
+  "/home/string/dev/structures-and-data-in-programming-uni/StackProblems/KnightOverlapping.cpp" "/home/string/dev/structures-and-data-in-programming-uni/StackProblems/cmake-build-debug/CMakeFiles/StackProblems.dir/KnightOverlapping.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 

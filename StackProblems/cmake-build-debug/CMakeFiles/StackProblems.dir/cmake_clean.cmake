@@ -1,5 +1,5 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/StackProblems.dir/HorseOverlapping.cpp.o"
+  "CMakeFiles/StackProblems.dir/KnightOverlapping.cpp.o"
   "StackProblems.pdb"
   "StackProblems"
 )

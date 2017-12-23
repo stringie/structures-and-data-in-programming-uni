@@ -123,32 +123,32 @@ StackProblems/fast:
 	$(MAKE) -f CMakeFiles/StackProblems.dir/build.make CMakeFiles/StackProblems.dir/build
 .PHONY : StackProblems/fast
 
-HorseOverlapping.o: HorseOverlapping.cpp.o
+KnightOverlapping.o: KnightOverlapping.cpp.o
 
-.PHONY : HorseOverlapping.o
+.PHONY : KnightOverlapping.o
 
 # target to build an object file
-HorseOverlapping.cpp.o:
-	$(MAKE) -f CMakeFiles/StackProblems.dir/build.make CMakeFiles/StackProblems.dir/HorseOverlapping.cpp.o
-.PHONY : HorseOverlapping.cpp.o
+KnightOverlapping.cpp.o:
+	$(MAKE) -f CMakeFiles/StackProblems.dir/build.make CMakeFiles/StackProblems.dir/KnightOverlapping.cpp.o
+.PHONY : KnightOverlapping.cpp.o
 
-HorseOverlapping.i: HorseOverlapping.cpp.i
+KnightOverlapping.i: KnightOverlapping.cpp.i
 
-.PHONY : HorseOverlapping.i
+.PHONY : KnightOverlapping.i
 
 # target to preprocess a source file
-HorseOverlapping.cpp.i:
-	$(MAKE) -f CMakeFiles/StackProblems.dir/build.make CMakeFiles/StackProblems.dir/HorseOverlapping.cpp.i
-.PHONY : HorseOverlapping.cpp.i
+KnightOverlapping.cpp.i:
+	$(MAKE) -f CMakeFiles/StackProblems.dir/build.make CMakeFiles/StackProblems.dir/KnightOverlapping.cpp.i
+.PHONY : KnightOverlapping.cpp.i
 
-HorseOverlapping.s: HorseOverlapping.cpp.s
+KnightOverlapping.s: KnightOverlapping.cpp.s
 
-.PHONY : HorseOverlapping.s
+.PHONY : KnightOverlapping.s
 
 # target to generate assembly for a file
-HorseOverlapping.cpp.s:
-	$(MAKE) -f CMakeFiles/StackProblems.dir/build.make CMakeFiles/StackProblems.dir/HorseOverlapping.cpp.s
-.PHONY : HorseOverlapping.cpp.s
+KnightOverlapping.cpp.s:
+	$(MAKE) -f CMakeFiles/StackProblems.dir/build.make CMakeFiles/StackProblems.dir/KnightOverlapping.cpp.s
+.PHONY : KnightOverlapping.cpp.s
 
 # Help Target
 help:
@@ -159,9 +159,9 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
 	@echo "... StackProblems"
-	@echo "... HorseOverlapping.o"
-	@echo "... HorseOverlapping.i"
-	@echo "... HorseOverlapping.s"
+	@echo "... KnightOverlapping.o"
+	@echo "... KnightOverlapping.i"
+	@echo "... KnightOverlapping.s"
 .PHONY : help
 
 

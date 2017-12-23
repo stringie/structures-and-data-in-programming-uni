@@ -1,1 +1,1 @@
-/usr/bin/c++  -g   CMakeFiles/StackProblems.dir/HorseOverlapping.cpp.o  -o StackProblems 
+/usr/bin/c++  -g   CMakeFiles/StackProblems.dir/KnightOverlapping.cpp.o  -o StackProblems 
