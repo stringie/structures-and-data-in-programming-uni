@@ -2,11 +2,11 @@
     "version": "2.0.0",
     "tasks": [
         {
-            "taskName": "build",
+            "label": "build",
             "type": "shell",
             "command": "g++",
             "args": [
-                "-g", "/home/string/dev/structures-and-data-in-programming-uni/Homework3/Problem2/Christmas.cpp"
+                "-g", "/home/string/dev/structures-and-data-in-programming-uni/Project-HuffmanCoding/Main.cpp"
             ],
             "group": {
                 "kind": "build",
