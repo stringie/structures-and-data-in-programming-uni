@@ -1,5 +1,6 @@
 #include "iostream"
 #include "vector"
+#include "stack"
 #include "bintree.cpp"
 using namespace std;
 
@@ -86,9 +87,32 @@ tree constructHuffmanTree(vector<tree> trees){
     return huffman;
 }
 
-// vector <pair<char,string>> constructAlphabet(tree huffman){
+string findPathToLeaf(char leaf, BinTreePosition<pair<char, int>> pos, string path){
+    if (pos.valid() && pos.get().first == leaf){
+        return path;
+    }else if (pos.valid() && pos.get().first == '*'){
+        path.push_back('0');
+        string left = findPathToLeaf(leaf, pos.left(), path);
+        path.pop_back();
+        path.push_back('1');
+        string right = findPathToLeaf(leaf, pos.right(), path);
 
-// }
+        return left + right;
+    } else if (pos.valid()){
+        return "";
+    }
+}
+
+vector <pair<char,string>> constructAlphabet(tree huffman, string leafs){
+    vector<pair<char, string>> alphabet;
+    for (auto leaf : leafs){
+        BinTreePosition<pair<char, int>> pos(huffman);
+        string pathCode = findPathToLeaf(leaf, pos, "");
+        alphabet.push_back(make_pair(leaf, pathCode));
+    }
+
+    return alphabet;
+}
 
 int main(){
     string test = "ABRACADABRA";
@@ -106,5 +130,29 @@ int main(){
 
     tree huffman = constructHuffmanTree(trees);
     huffman.printDOTPair();
-    // vector<pair<char, string>> alphabet = constructAlphabet(huffman);
+
+    string leafs;
+    for (auto p : charFrequency){
+        char c = p.first;
+        leafs.push_back(c);
+    }
+
+    vector<pair<char, string>> alphabet = constructAlphabet(huffman, leafs);
+
+    for (auto p : alphabet){
+        cout << p.first << " : " << p.second << endl;
+    }
+
+
+    string result;
+    for (auto c : test){
+        for (auto p : alphabet){
+            if (c == p.first){
+                result.append(p.second);
+                break;
+            }
+        }
+    }
+
+    cout << result;
 }
