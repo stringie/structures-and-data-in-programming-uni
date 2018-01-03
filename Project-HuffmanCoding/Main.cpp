@@ -114,6 +114,28 @@ vector <pair<char,string>> constructAlphabet(tree huffman, string leafs){
     return alphabet;
 }
 
+string decompress(string s, tree huffman){
+    string str;
+    auto sit = s.begin();
+    while (sit != s.end())
+    {
+        BinTreePosition<pair<char, int>> pos(huffman);
+        while (pos.get().first == '*'){
+            char bit = (*sit);
+            if (bit == '0'){
+                pos = pos.left();
+            } else {
+                pos = pos.right();
+            }
+            sit++;
+        }
+
+        str.push_back(pos.get().first);
+    }
+
+    return str;
+}
+
 int main(){
     string test = "ABRACADABRA";
     vector<pair<char, int>> charFrequency = getCharFrequency(test);
@@ -154,5 +176,7 @@ int main(){
         }
     }
 
-    cout << result;
+    cout << result << endl;
+    string words = decompress(result, huffman);
+    cout << words;
 }
