@@ -6,6 +6,8 @@ using namespace std;
 
 using tree = BinTree<pair<char, int>>;
 
+tree constructHuffmanTree(vector<pair<char, int>> frequency);
+
 string getTextFromFile(string path){
     string text;
     ifstream file(path);
@@ -19,7 +21,21 @@ string getTextFromFile(string path){
 }
 
 tree getHuffmanTreeFromFile(string path){
-    return tree(make_pair('*',1));
+    ifstream file(path);
+    string line;
+    vector<pair<char, int>> freq;
+    while (file >> line)
+    {
+        int f = line.back() - '0';
+        line.pop_back();
+        line.pop_back();
+        char c = line.back();
+        if(c != '*'){
+            freq.push_back(make_pair(c, f));
+        }
+    }
+
+    return constructHuffmanTree(freq);
 }
 
 vector<pair<char,int>> getCharFrequency(string s){
@@ -68,7 +84,7 @@ int getSmallestTreeIndex(vector<tree> trees){
     return index;
 }
 
-tree constructHuffmanTree(string text, vector<pair<char, int>> frequencies){
+tree constructHuffmanTree(vector<pair<char, int>> frequencies){
     //create initial huffman tree(s)
     vector<tree> trees;
     for (auto p : frequencies){
@@ -183,43 +199,45 @@ string decompress(string s, tree huffman){
 }
 
 int main(){
-    string text = getTextFromFile("input.txt");
-    vector<pair<char, int>> frequencies = getCharFrequency(text);
-    tree huffman = constructHuffmanTree(text, frequencies);
+    // string text = getTextFromFile("input.txt");
+    // vector<pair<char, int>> frequencies = getCharFrequency(text);
+    // tree huffman = constructHuffmanTree(frequencies);
     // string compressed = compress(huffman, text, frequencies);
     // string decompressed = decompress(compressed ,huffman);
 
-    huffman.printDOTPair();
+    // huffman.printDOTPair();
 
-    // cin.ignore();
-    // char mode; cin >> mode;
-    // string inputPath;
-    // string outputPath;
+    cin.ignore();
+    char mode; cin >> mode;
+    string inputPath;
+    string outputPath;
 
-    // cin.ignore();
-    // cin.ignore();
-    // cin.ignore();
+    cin.ignore();
+    cin.ignore();
+    cin.ignore();
     
-    // cin >> inputPath;
+    cin >> inputPath;
 
-    // cin.ignore();
-    // cin.ignore();
-    // cin.ignore();
+    cin.ignore();
+    cin.ignore();
+    cin.ignore();
 
-    // cin >> outputPath;
+    cin >> outputPath;
 
-    // string text = getTextFromFile(inputPath);
-    // ofstream file(outputPath);
-    // if (mode == 'c') {
-    //     vector<pair<char, int>> frequencies = getCharFrequency(text);
-    //     tree huffman = constructHuffmanTree(text, frequencies);
-    //     string compressed = compress(huffman, text, frequencies);
+    string text = getTextFromFile(inputPath);
+    ofstream file(outputPath);
+    if (mode == 'c') {
+        vector<pair<char, int>> frequencies = getCharFrequency(text);
+        tree huffman = constructHuffmanTree(frequencies);
+        ofstream treeStream("tree.txt");
+        huffman.printDOTPair(treeStream);
+        string compressed = compress(huffman, text, frequencies);
 
-    //     file << compressed; 
-    // } else {
-    //     tree huffman = getHuffmanTreeFromFile("tree.txt");
-    //     string decompressed = decompress(text, huffman);
-    //     file << decompressed;
-    // }
+        file << compressed; 
+    } else {
+        tree huffman = getHuffmanTreeFromFile("tree.txt");
+        string decompressed = decompress(text, huffman);
+        file << decompressed;
+    }
 
 }
