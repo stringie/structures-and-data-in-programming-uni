@@ -148,14 +148,14 @@ protected:
         auto dataRoot = node->data;
         if (node->left != nullptr) {
         auto dataChildL = node->left->data;
-        string child = "left";
-        os << "pair(" << dataRoot.first << ',' << dataRoot.second << ") -> " << child << "pair(" << dataChildL.first << ',' << dataChildL.second << ')' << endl;
+        string child = "l";
+        os << dataRoot.first << ',' << dataRoot.second << "->" << child << dataChildL.first << ',' << dataChildL.second << endl;
         printNodeDOTPair(node->left, os);
         }
         if (node->right != nullptr) {
         auto dataChildR = node->right->data;
-        string child = "right";
-        os << "pair(" << dataRoot.first << ',' << dataRoot.second << ") -> " << child << "pair(" << dataChildR.first << ',' << dataChildR.second << ')' << endl;
+        string child = "r";
+        os << dataRoot.first << ',' << dataRoot.second << "->" << child << dataChildR.first << ',' << dataChildR.second << endl;
         printNodeDOTPair(node->right, os);
       }
     }
@@ -251,11 +251,8 @@ public:
   }
 
   void printDOTPair(std::ostream& os = std::cout) {
-    os << "digraph bintree {\n";
     // извеждане на корена, в случай, че той представлява цялото дърво
-    os << "pair(" << root().first << ',' << root().second << ')' << endl;
     printNodeDOTPair(rootptr, os);
-    os << "}\n";
   }
 };
 
