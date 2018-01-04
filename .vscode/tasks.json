@@ -6,7 +6,7 @@
             "type": "shell",
             "command": "g++",
             "args": [
-                "-g", "/home/string/dev/structures-and-data-in-programming-uni/Project-HuffmanCoding/HuffmanCoding.cpp"
+                "-g", "/home/string/dev/structures-and-data-in-programming-uni/TreeProblems/SecondExercises/Problem1.cpp"
             ],
             "group": {
                 "kind": "build",
