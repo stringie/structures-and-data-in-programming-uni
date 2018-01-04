@@ -264,16 +264,6 @@ vector<T> getLevel(int k, BinTreePosition<T> pos){
     return v;
   }
 
-  if(!(+pos).valid() && k != 0 && !(-pos).valid()){
-    vector<T> v;
-    return v;
-  }
-
-  if(!(-pos).valid() && k != 0 && !(+pos).valid()){
-    vector<T> v;
-    return v;
-  }
-
   if (k == 0){
     vector<T> v;
     v.push_back((*pos));
