@@ -181,6 +181,8 @@ public:
 
   vector<T> level(int);
 
+  bool isBOT();
+
   // позицията към корена
   P rootpos() {
     return P(*this);
@@ -256,6 +258,27 @@ public:
     printNodeDOTPair(rootptr, os);
   }
 };
+
+template <typename T>
+bool BinTree<T>::isBOT(){
+  if ((*this).empty())
+  {
+    return true;
+  }
+  bool flag = true;
+  T prev = (*this)[0];
+  int c = (*this).count();
+  for (int i = 1; i < c && flag; i++){
+    T curr = (*this)[i];
+    if (curr < prev){
+      flag = false;
+    }
+    
+    prev = curr;
+  }
+
+  return flag;
+}
 
 template <typename T>
 vector<T> getLevel(int k, BinTreePosition<T> pos){
