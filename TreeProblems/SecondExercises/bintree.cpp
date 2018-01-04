@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include <cmath>
+#include <vector>
 using namespace std;
 
 template <typename T>
@@ -178,6 +179,8 @@ public:
 
   T& operator[](int);
 
+  vector<T> level(int);
+
   // позицията към корена
   P rootpos() {
     return P(*this);
@@ -253,6 +256,49 @@ public:
     printNodeDOTPair(rootptr, os);
   }
 };
+
+template <typename T>
+vector<T> getLevel(int k, BinTreePosition<T> pos){
+  if(!pos.valid()){
+    vector<T> v;
+    return v;
+  }
+
+  if(!(+pos).valid() && k != 0 && !(-pos).valid()){
+    vector<T> v;
+    return v;
+  }
+
+  if(!(-pos).valid() && k != 0 && !(+pos).valid()){
+    vector<T> v;
+    return v;
+  }
+
+  if (k == 0){
+    vector<T> v;
+    v.push_back((*pos));
+    return v;
+  }
+
+  vector<T> leftLevel = getLevel(k-1, pos.left());
+  vector<T> rightLevel = getLevel(k-1, pos.right());
+
+  vector<T> both;
+  for (auto var : leftLevel){
+    both.push_back(var);
+  }
+  for (auto var : rightLevel){
+    both.push_back(var);
+  }
+
+  return both;
+}
+
+template <typename T>
+vector<T> BinTree<T>::level(int k){
+  BinTreePosition<T> pos(*this);
+  return getLevel(k-1, pos);
+}
 
 template <typename T>
 int myCount(BinTreePosition<T> pos){
