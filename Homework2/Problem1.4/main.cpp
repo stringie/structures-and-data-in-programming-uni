@@ -43,8 +43,8 @@ void findPath(vector<vector<char>> matrix, pair<int, int> mouse, int n){
     while(true){
         if(s.empty())
             break;
-        int x = get<0>(s.top());
-        int y = get<1>(s.top());
+        int x = s.top().first;
+        int y = s.top().second;
 
         if(matrix[x][y] == 'e'){
             break;
@@ -70,15 +70,15 @@ void findPath(vector<vector<char>> matrix, pair<int, int> mouse, int n){
     }
 
     if(!s.empty()){
-        int x = get<0>(s.top());
-        int y = get<1>(s.top());
-        cout << "at: (" << get<0>(s.top()) << ", " << get<1>(s.top()) << ")\n";
+        int x = s.top().first;
+        int y = s.top().second;
+        cout << "at: (" << s.top().first << ", " << s.top().second << ")\n";
         s.pop();
         while(!s.empty()){
-            int nextX = get<0>(s.top());
-            int nextY = get<1>(s.top());
+            int nextX = s.top().first;
+            int nextY = s.top().second;
             if(abs(nextX - x) + abs(nextY - y) == 1){
-                cout << "at: (" << get<0>(s.top()) << ", " << get<1>(s.top()) << ")\n";
+                cout << "at: (" << s.top().first << ", " << s.top().second << ")\n";
                 s.pop();
                 x = nextX;
                 y = nextY;
