@@ -96,20 +96,33 @@ public:
 
 
 int main() {
+    // брой джуджета
     int n; cin >> n;
+    cin.ignore();
+
+    // създаваме фабриката за справяне с оплакванията
     NorthPole np(n);
-    for (int i = 0; i < n; i++){
-        string person; cin >> person;
-        int dwarf; cin >> dwarf;
-        np.assignPresent(person + to_string(dwarf));
+
+    // въвеждаме оплакванията 
+    string person;
+    while (getline(cin, person)){
+        if(person.empty()){
+            break;
+        }
+        np.assignPresent(person);
     }
+
+    // дадено време
     int t; cin >> t;
 
+    // извеждаме организацията
     np.printAssembly();
     cout << "\n";
+    
+    // извеждаме броя подаръци за време t
     cout << np.fixed(t) << endl;
     cout << "\n";
+    
+    // извеждаме резултата
     np.printAssembly();
-
-    int k; cin >> k;
 }

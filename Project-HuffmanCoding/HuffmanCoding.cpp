@@ -52,7 +52,7 @@ vector<pair<char,int>> getCharFrequency(string s){
 
             fit++;
         }
-
+        
         if (!present){
             auto p = make_pair((*sit), 1);
             frequency.push_back(p);
@@ -205,39 +205,35 @@ int main(){
     // string compressed = compress(huffman, text, frequencies);
     // string decompressed = decompress(compressed ,huffman);
 
-    // huffman.printDOTPair();
 
-    cin.ignore();
-    char mode; cin >> mode;
-    string inputPath;
-    string outputPath;
+    // string inputPath;
+    // string outputPath;
 
-    cin.ignore();
-    cin.ignore();
-    cin.ignore();
+    // cin.ignore();
+    // cin.ignore();
+    // cin.ignore();
     
-    cin >> inputPath;
+    // cin >> inputPath;
 
-    cin.ignore();
-    cin.ignore();
-    cin.ignore();
+    // cin.ignore();
+    // cin.ignore();
+    // cin.ignore();
 
-    cin >> outputPath;
+    // cin >> outputPath;
 
-    string text = getTextFromFile(inputPath);
-    ofstream file(outputPath);
-    if (mode == 'c') {
-        vector<pair<char, int>> frequencies = getCharFrequency(text);
-        tree huffman = constructHuffmanTree(frequencies);
-        ofstream treeStream("tree.txt");
-        huffman.printDOTPair(treeStream);
-        string compressed = compress(huffman, text, frequencies);
+    // string text = getTextFromFile(inputPath);
+    // ofstream file(outputPath);
+    // if (mode == 'c') {
+    //     vector<pair<char, int>> frequencies = getCharFrequency(text);
+    //     tree huffman = constructHuffmanTree(frequencies);
+    //     ofstream treeStream("tree.txt");
+    //     huffman.printDOTPair(treeStream);
+    //     string compressed = compress(huffman, text, frequencies);
 
-        file << compressed; 
-    } else {
-        tree huffman = getHuffmanTreeFromFile("tree.txt");
-        string decompressed = decompress(text, huffman);
-        file << decompressed;
-    }
-
+    //     file << compressed; 
+    // } else {
+    //     tree huffman = getHuffmanTreeFromFile("tree.txt");
+    //     string decompressed = decompress(text, huffman);
+    //     file << decompressed;
+    // }
 }
