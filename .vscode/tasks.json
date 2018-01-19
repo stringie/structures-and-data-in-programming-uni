@@ -6,7 +6,7 @@
             "type": "shell",
             "command": "g++",
             "args": [
-                "-g", "/home/string/dev/structures-and-data-in-programming-uni/Homework3/Problem2/Christmas.cpp"
+                "-g", "/home/string/dev/structures-and-data-in-programming-uni/test.cpp"
             ],
             "group": {
                 "kind": "build",
