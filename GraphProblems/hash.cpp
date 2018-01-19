@@ -19,7 +19,7 @@ class LinkedHashTable : public Dictionary<K, V> {
 
   using KVP = KeyValuePair<K, V>;
   using Bucket = LinkedList<KVP>;
-  using I = typename Bucket::I;
+  using I = typename Bucket::I; 
   
   Bucket* table;
 
