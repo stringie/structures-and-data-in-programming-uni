@@ -261,10 +261,10 @@ void testDuplicates(){
 
 void testRemoveDuplicates(){
    
-    Box<int>* l = new Box<int>(1, 
+    Box<int>* l = new Box<int>(2, 
                     new Box<int>(3,
                         new Box<int>(3, 
-                            new Box<int>(1, 
+                            new Box<int>(2, 
                                 new Box<int>(3,
                                     new Box<int>(3, nullptr))))));
 
@@ -311,10 +311,10 @@ int main(){
     
     //remove comment of a function to test it
 
-   testCount();
+//    testCount();
 //    testRange();
 //    testRemoveAll();
-//    testAppend();
+   testAppend();
 //    testConcat();
 //    testMap();
 //    testReverse();
