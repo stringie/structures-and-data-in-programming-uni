@@ -6,8 +6,6 @@ using namespace std;
 
 using tree = BinTree<pair<char, int>>;
 
-tree constructHuffmanTree(vector<pair<char, int>> frequency);
-
 string getTextFromFile(string path){
     string text;
     ifstream file(path);
@@ -18,24 +16,6 @@ string getTextFromFile(string path){
     }
 
     return text;
-}
-
-tree getHuffmanTreeFromFile(string path){
-    ifstream file(path);
-    string line;
-    vector<pair<char, int>> freq;
-    while (file >> line)
-    {
-        int f = line.back() - '0';
-        line.pop_back();
-        line.pop_back();
-        char c = line.back();
-        if(c != '*'){
-            freq.push_back(make_pair(c, f));
-        }
-    }
-
-    return constructHuffmanTree(freq);
 }
 
 vector<pair<char,int>> getCharFrequency(string s){
@@ -198,10 +178,60 @@ string decompress(string s, tree huffman){
     return str;
 }
 
+//save a tree into a file with in-order traversal
+void saveHuffmanTree(BinTreePosition<pair<char,int>> pos, ofstream& os){
+    if (!pos.valid()){
+        os << "()";
+    }else{
+        os << '(';
+        saveHuffmanTree(pos.left(), os);
+        os << '[' << (*pos).first << ',' << (*pos).second << ']';
+        saveHuffmanTree(pos.right(), os);
+        os << ')';
+    }
+}
+
+tree getHuffmanTreeFromFile(const char*& treeText){
+    treeText++; // skip opening bracket
+    if ((*treeText) == ')'){
+        treeText++;
+        tree nullTree;
+        return nullTree;
+    }
+    tree left = getHuffmanTreeFromFile(treeText);
+    treeText++; // skip opening square bracket
+    char root = *treeText; // get node char
+    treeText++; // skip node char
+    treeText++; // skip comma
+    int count = 0; // retrieve node char count
+    char c = *treeText;
+    while (c >= '0' && c <= '9'){
+        count *= 10;
+        count += c - '0';
+        treeText++;
+        c = *treeText;
+    }
+    treeText++; // skip closing square bracket
+    tree right = getHuffmanTreeFromFile(treeText);
+    treeText++;
+
+    tree huffman(make_pair(root, count), left, right);
+    return huffman;
+}
+
+
 int main(){
-    // string text = getTextFromFile("input.txt");
-    // vector<pair<char, int>> frequencies = getCharFrequency(text);
-    // tree huffman = constructHuffmanTree(frequencies);
+    string text = getTextFromFile("input.txt");
+    vector<pair<char, int>> frequencies = getCharFrequency(text);
+    tree huffman = constructHuffmanTree(frequencies);
+    ofstream file("tree.txt");
+    BinTreePosition<pair<char, int>> pos(huffman);
+    saveHuffmanTree(pos, file);
+    file.close();
+    string txt = getTextFromFile("tree.txt");
+    const char* treeText = txt.c_str();
+    tree restoredHuffman = getHuffmanTreeFromFile(treeText);
+
     // string compressed = compress(huffman, text, frequencies);
     // string decompressed = decompress(compressed ,huffman);
 
