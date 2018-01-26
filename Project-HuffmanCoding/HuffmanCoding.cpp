@@ -11,7 +11,9 @@ string getTextFromFile(string path){
     ifstream file(path);
     
     char c;
-    while (file >> c){
+    while (c = file.get()){
+        if (file.eof())
+            break;
         text.push_back(c);
     }
 
