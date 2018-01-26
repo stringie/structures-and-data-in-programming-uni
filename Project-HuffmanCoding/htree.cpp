@@ -1,6 +1,7 @@
 #include "bintree.cpp"
 #include "vector"
 #include "fstream"
+#include "bitset"
 using namespace std;
 
 using tree = BinTree<pair<char, int>>;
@@ -13,14 +14,18 @@ private:
     string pathToFile;
     string inputFile;
     string compressedFile;
+    string compressedFileInByteFormat;
     vector<pair<char, int>> frequencies;
 
 public:
+    HTree();
     HTree(string path);
     void save(string path);
     void load(string path);
     string getText();
     string getCompressedText();
+    string getCompressedTextInByteFormat();
+    string decompress(string s);
     ~HTree();
 
 private:
@@ -30,11 +35,13 @@ private:
     void saveHuffmanTree(BinTreePosition<pair<char, int>> pos, ofstream& ofs);
     tree getHuffmanTreeFromFile(const char*& treeText);
     string getTextFromFile(string path);
-    string decompress(string s, tree huff);
     string findPathToLeaf(char leaf, BinTreePosition<pair<char, int>> pos, string path);
     int getSmallestTreeIndex(vector<tree> trees);
     vector<pair<char, string>> constructAlphabet();
+    void convertOutputToByteFormat();
 };
+
+HTree::HTree() {}
 
 // constructor that take path to file for compression, constructs tree and compresses
 HTree::HTree(string path) : pathToFile(path) {
@@ -67,6 +74,25 @@ string HTree::getText() {
 
 string HTree::getCompressedText() {
     return compressedFile;
+}
+
+string HTree::getCompressedTextInByteFormat(){
+    this->convertOutputToByteFormat();
+    return compressedFileInByteFormat;
+}
+
+void HTree::convertOutputToByteFormat(){
+    int bitCounter = 0;
+    string byte = "";
+    for (int i = 0; i < compressedFile.size(); i++) {
+        if (bitCounter == 8 || i == compressedFile.size() - 1){
+            bitCounter = 0;
+            compressedFileInByteFormat.append(to_string(bitset<8>(byte).to_ulong()) + " ");
+            byte = "";
+        }
+        byte.push_back(compressedFile.at(i));
+        bitCounter++;
+    }
 }
 
 string HTree::getTextFromFile(string path){
@@ -223,12 +249,12 @@ void HTree::compress(){
     this->compressedFile = compressed;
 }
 
-string HTree::decompress(string s, tree huffman){
+string HTree::decompress(string s){
     string str;
     auto sit = s.begin();
     while (sit != s.end())
     {
-        BinTreePosition<pair<char, int>> pos(huffman);
+        BinTreePosition<pair<char, int>> pos(this->huffman);
         while (pos.get().first == '*'){
             char bit = (*sit);
             if (bit == '0'){
