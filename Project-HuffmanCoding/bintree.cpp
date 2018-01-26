@@ -281,40 +281,4 @@ int depth(BinTreePosition<T> p) {
   return 1 + std::max(depth(-p), depth(+p));
 }
 
-/*
-  <израз> ::= <цифра> | (<израз><операция><израз>)
-  Считаме, че изразът е коректно зададен
-*/
-BinTree<char> createExpressionTree(std::istream& is) {
-  char c;
-  is >> c;
-  if (std::isdigit(c))
-    return BinTree<char>(c);
-  // c == '('
-  BinTree<char> leftTree = createExpressionTree(is);
-  is >> c;
-  // c е операцията
-  BinTree<char> rightTree = createExpressionTree(is);
-  // пропускаме затварящата скоба
-  is.get();
-  return BinTree<char>(c, leftTree, rightTree);
-}
-
-int applyOperation(char op, int larg, int rarg) {
-  switch (op) {
-  case '+' : return larg + rarg;
-  case '-' : return larg - rarg;
-  case '*' : return larg * rarg;
-  case '/' : return larg / rarg;
-  case '^' : return pow(larg, rarg);
-  }
-  return 0;
-}
-
-int calculateExpressionTree(BinTreePosition<char> p) {
-  if (std::isdigit(*p))
-    return *p - '0';
-  return applyOperation(*p, calculateExpressionTree(-p), calculateExpressionTree(+p));
-}
-
 #endif
