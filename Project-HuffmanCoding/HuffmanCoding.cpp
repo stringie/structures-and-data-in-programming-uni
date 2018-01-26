@@ -36,8 +36,9 @@ int main(){
     cout << "Original file size: " << huffman.getText().size()*8 << endl; // показваме разликата в размера (ефективността на компресията)
     cout << "Compressed file size: " << compressed.size() << endl;
 
-    // показваме възможност за възстановяване на низа по дървото (декомпресия)
-    cout << "Decompressed file contents: " << huffman.decompress(compressed) << endl << endl; 
+    // показваме възможност за възстановяване на низа по дървото (декомпресия) и в двата формата
+    cout << "Decompressed bit file contents: " << huffman.decompress(compressed) << endl;
+    cout << "Decompressed byte file contents: " << huffman.decompress(compressedInBytes) << endl << endl; 
 
     // показваме възможност да запазим дървото в удобен и смислен формат (in-order)
     huffman.save("tree.txt");

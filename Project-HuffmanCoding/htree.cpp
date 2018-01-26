@@ -34,6 +34,8 @@ private:
     void compress();
     void saveHuffmanTree(BinTreePosition<pair<char, int>> pos, ofstream& ofs);
     tree getHuffmanTreeFromFile(const char*& treeText);
+    string decompressBits(string s);
+    string decompressBytes(string s);
     string getTextFromFile(string path);
     string findPathToLeaf(char leaf, BinTreePosition<pair<char, int>> pos, string path);
     int getSmallestTreeIndex(vector<tree> trees);
@@ -43,7 +45,7 @@ private:
 
 HTree::HTree() {}
 
-// constructor that take path to file for compression, constructs tree and compresses
+// контруктор приемащ път към информацията за компресиране
 HTree::HTree(string path) : pathToFile(path) {
     this->inputFile = this->getTextFromFile(path);
     this->getCharFrequency();
@@ -53,21 +55,21 @@ HTree::HTree(string path) : pathToFile(path) {
 
 HTree::~HTree() {}
 
-// saves huffman tree to file in in-order format
+// запазва дървото в in-order формат
 void HTree::save(string path) {
     ofstream file(path);
     BinTreePosition<pair<char, int>> pos(this->huffman);
     this->saveHuffmanTree(pos, file);
 }
 
-// loads in-order format huffman tree from file
+// зарежда дърво от in-order формат
 void HTree::load(string path) {
     const char * file = this->getTextFromFile(path).c_str();
     this->huffman = this->getHuffmanTreeFromFile(file);
     this->compress();
 }
 
-// returns original uncompressed file
+// връща оригиналния низ
 string HTree::getText() {
     return inputFile;
 }
@@ -84,15 +86,28 @@ string HTree::getCompressedTextInByteFormat(){
 void HTree::convertOutputToByteFormat(){
     int bitCounter = 0;
     string byte = "";
+    // броя на нулите за формата на последното число
+    int zerosExtraInfo = 0;
     for (int i = 0; i < compressedFile.size(); i++) {
-        if (bitCounter == 8 || i == compressedFile.size() - 1){
+        byte.push_back(compressedFile.at(i));
+        bitCounter++;
+        if (bitCounter == 8 || i == compressedFile.size()-1){
             bitCounter = 0;
+            auto sit = byte.begin();
+            zerosExtraInfo = 0;
+            while (*sit == '0'){
+                zerosExtraInfo++;
+                sit++;
+            }
             compressedFileInByteFormat.append(to_string(bitset<8>(byte).to_ulong()) + " ");
             byte = "";
         }
-        byte.push_back(compressedFile.at(i));
-        bitCounter++;
     }
+
+    // Този форма изисква допълнителна информация за боря нули които са отрязани
+    // при конвертиване на последния 8-битов израз към десетично число.
+    // Записва се по формат 'zN' където N е броя на нулите
+    compressedFileInByteFormat.append("z" + to_string(zerosExtraInfo));
 }
 
 string HTree::getTextFromFile(string path){
@@ -110,7 +125,7 @@ string HTree::getTextFromFile(string path){
     return text;
 }
 
-// constructs the frequency table
+// конструира честотната таблица
 void HTree::getCharFrequency(){
     vector<pair<char,int>> frequency;
     auto sit = this->inputFile.begin();
@@ -158,40 +173,40 @@ int HTree::getSmallestTreeIndex(vector<tree> trees){
 }
 
 void HTree::constructHuffmanTree(){
-    //create initial huffman tree(s)
+    // създават се първоначалните дървета
     vector<tree> trees;
     for (auto p : this->frequencies){
         tree t(p);
         trees.push_back(t);
     }
     
-    // reduce to single tree
+    // цикъл който редуцира броя на дърветата до едно хъфманово дърво
     while (trees.size() != 1)
     {
-        // get smallest tree
+        // взима се най малкото
         int indexF = this->getSmallestTreeIndex(trees);
         tree fMin = trees.at(indexF);
 
-        // erase smallest tree
+        // изтрива се най малкото
         auto it = trees.begin();
         advance(it, indexF);
         it = trees.erase(it);
 
-        // get second smallest tree
+        // взима се второто най малко
         int indexS = this->getSmallestTreeIndex(trees);
         tree sMin = trees.at(indexS);
 
-        // erase second smallest tree
+        // изтрива се второто най малко
         it = trees.begin();
         advance(it, indexS);
         it = trees.erase(it);
 
-        // add counts for the new root
+        // изчислява се корена на новото дърво
         int fCount = fMin.root().second;
         int sCount = sMin.root().second;
         int mergedTreeCount = fCount + sCount;
 
-        // create new tree and push
+        // създава се едно цяло дърво от двете най малки
         tree mergedTree(make_pair('*', mergedTreeCount), fMin, sMin);
         trees.push_back(mergedTree);   
     }
@@ -200,6 +215,7 @@ void HTree::constructHuffmanTree(){
     this->huffman = huff;
 }
 
+// обхожда се дървото за да се намери пътя до листото в 0 или 1
 string HTree::findPathToLeaf(char leaf, BinTreePosition<pair<char, int>> pos, string path){
     if (pos.valid() && pos.get().first == leaf){
         return path;
@@ -249,7 +265,8 @@ void HTree::compress(){
     this->compressedFile = compressed;
 }
 
-string HTree::decompress(string s){
+// превръща примерно 01110110 към изречение чрез дървото
+string HTree::decompressBits(string s){
     string str;
     auto sit = s.begin();
     while (sit != s.end())
@@ -271,7 +288,50 @@ string HTree::decompress(string s){
     return str;
 }
 
-//save a tree into a file with in-order traversal
+// превърща примерно 23 104 към битове и ги подава на decompressBits
+string HTree::decompressBytes(string s){
+    string bits = "";
+    auto sit = s.begin();
+    while(sit != s.end()){
+        int number = 0;
+        while (*sit != ' '){
+            number *= 10;
+            number += *sit - '0';
+            sit++;
+        }
+
+        sit++;
+        if((*sit) == 'z'){
+            int zerosFix = (*(++sit)) - '0';
+            while (zerosFix != 0){
+                bits.push_back('0');
+                zerosFix--;
+            }
+            sit++;
+        }
+
+        string n = bitset<8>(number).to_string();
+        if (sit == s.end()){
+            auto it = n.begin();
+            while(*it != '1'){
+                it = n.erase(it);
+            }
+        }
+        bits.append(n);
+    }
+
+    return this->decompressBits(bits);
+}
+
+// публична функция която избира подходящия формат за възстановяване на информация
+string HTree::decompress(string s){
+    if(s.find(' ') == string::npos)
+        return this->decompressBits(s);
+
+    return decompressBytes(s);
+}
+
+// запазване на дървото
 void HTree::saveHuffmanTree(BinTreePosition<pair<char,int>> pos, ofstream& os){
     if (!pos.valid()){
         os << "()";
@@ -285,18 +345,18 @@ void HTree::saveHuffmanTree(BinTreePosition<pair<char,int>> pos, ofstream& os){
 }
 
 tree HTree::getHuffmanTreeFromFile(const char*& treeText){
-    treeText++; // skip opening bracket
+    treeText++; // пропуска отварящата скоба
     if ((*treeText) == ')'){
         treeText++;
         tree nullTree;
         return nullTree;
     }
     tree left = this->getHuffmanTreeFromFile(treeText);
-    treeText++; // skip opening square bracket
-    char root = *treeText; // get node char
-    treeText++; // skip node char
-    treeText++; // skip comma
-    int count = 0; // retrieve node char count
+    treeText++; // пропуска квадратна скоба
+    char root = *treeText; // взима корена
+    treeText++; // пропуска корена
+    treeText++; // пропуска запетая
+    int count = 0; // взима броя
     char c = *treeText;
     while (c >= '0' && c <= '9'){
         count *= 10;
@@ -304,9 +364,9 @@ tree HTree::getHuffmanTreeFromFile(const char*& treeText){
         treeText++;
         c = *treeText;
     }
-    treeText++; // skip closing square bracket
+    treeText++; // пропуска затваряща квадратна скоба
     tree right = this->getHuffmanTreeFromFile(treeText);
-    treeText++;
+    treeText++; // пропуска затваряща скоба
 
     tree huffman(make_pair(root, count), left, right);
     return huffman;
