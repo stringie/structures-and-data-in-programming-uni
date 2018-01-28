@@ -65,7 +65,7 @@ int main(int argcount, char** args){
             file.close();
 
             if (efficiency){
-                cout << "Original file size: " << huffman.getText().size()*8 << endl;
+                cout << "Original file size: " << huffman.getText().size()*8 << endl; // показваме разликата в размера (ефективността на компресията)
                 cout << "Compressed file size: " << compressed.size() << endl;
             }
 
