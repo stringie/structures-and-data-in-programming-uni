@@ -67,6 +67,7 @@ void HTree::load(string path) {
     this->getTextFromFile(path);
     const char* file = this->inputFile.c_str();
     this->huffman = this->getHuffmanTreeFromFile(file);
+    this->getCharFrequency();
     this->compress();
 }
 

@@ -77,7 +77,10 @@ int main(int argcount, char** args){
         if (load){
             HTree huffman;
             huffman.load(treePath);
-            string decompressed = huffman.decompress(input);
+            ifstream inputFile(input);
+            string toDecompress;
+            inputFile >> toDecompress;
+            string decompressed = huffman.decompress(toDecompress);
             ofstream file(output);
             file << decompressed;
             file.close();
