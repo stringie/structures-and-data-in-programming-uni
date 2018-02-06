@@ -12,7 +12,7 @@
             "program": "${workspaceFolder}/a.out",
             "args": [],
             "stopAtEntry": false,
-            "cwd": "${workspaceFolder}/Project-HuffmanCoding",
+            "cwd": "${workspaceFolder}/FinalExamprep",
             "environment": [],
             "externalConsole": false,
             "MIMode": "gdb",
