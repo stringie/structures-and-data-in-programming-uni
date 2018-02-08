@@ -32,6 +32,7 @@
         "type_traits": "cpp",
         "typeinfo": "cpp",
         "vector": "cpp",
-        "bitset": "cpp"
+        "bitset": "cpp",
+        "functional": "cpp"
     }
 }
